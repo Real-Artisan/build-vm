@@ -55,19 +55,11 @@ resource "azurerm_linux_virtual_machine" "spacemonkey" {
     disk_size_gb      = 30
   }
 
-  storage_image_reference {
+  source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
     sku       = "20.04-LTS"
     version   = "latest"
-  }
-
-  source_os_disk {
-    name              = "osdisk"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-    disk_size_gb      = 30
   }
 
   network_interface_ids = [azurerm_network_interface.spacemonkey.id]
